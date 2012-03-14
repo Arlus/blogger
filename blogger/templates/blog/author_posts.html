@@ -1,0 +1,82 @@
+<html>
+<head>
+
+<style type="text/css">
+#mc_embed_signup input.email{width: 25%;}
+	#mc_embed_signup{background:#fff; clear:left; font:14px Helvetica,Arial,sans-serif; }
+	/* Add your own MailChimp form style overrides in your site stylesheet or in this style block.
+	   We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
+</style>
+</head>
+<body>
+<!-- Begin MailChimp Signup Form -->
+<!--<link href="http://cdn-images.mailchimp.com/embedcode/slim-081711.css" rel="stylesheet" type="text/css">-->
+<div id="mc_embed_signup">
+<form action="http://busykenyan.us4.list-manage.com/subscribe/post?u=0ea7c30c654b60cb00ab4d3f1&amp;id=5d94d0e51f" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank">
+	<label for="mce-EMAIL">Subscribe to our mailing list</label>
+	<input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" required>
+	<div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+</form>
+</div>
+
+<!--End mc_embed_signup-->
+<!-- // MAILCHIMP UNSUBSCRIBE CODE \\ -->
+<a href="http://busykenyan.us4.list-manage1.com/unsubscribe?u=0ea7c30c654b60cb00ab4d3f1&id=5d94d0e51f">Unsubscribe from our newsletter</a>
+<!-- \\ MAILCHIMP UNSUBSCRIBE CODE // -->
+<div id="navigation">
+<a href="/">Home</a>
+</div>
+<div id="feeds">
+<a href="/feeds/latest/">RSS</a>
+</div>
+{%if cat_list%}
+{%for b in cat_list%}
+<div id="category_list"><li><a href="/category/{{b}}/">{{b}}</a></li></div>
+{%endfor%}
+{%endif%}
+{%for nav in nav.object_list%}
+<div id=category><p>Category:{{nav.category}}</p></div><div id="date">{{nav.date}}</div><div id="title"><a href=/article/{{nav.slug}}/>{{nav}}</a><div><div id="by">By: <a href="/author/{{nav.author}}/">{{nav.author}}</a></div><div id = "body">
+{%if nav.video%}<div id="video"><p><iframe width="560" height="315" src={{nav.video}} frameborder="0" allowfullscreen></iframe></div>
+{%else%}
+{%if nav.main_photo%}
+<div id="main_pic"><p><img height="300" width="500" src="{{ MEDIA_URL }}{{ object.image.url }}{{nav.main_photo}}" alt="image" /></p></div>
+{%endif%}
+{%endif%}</li>
+<p>{{nav.body|truncatewords:2}}<a href="/article/{{nav.slug}}">More <a/></p></div>
+<div id="meta">
+Meta: {{nav.meta_keywords}}
+</div><p>
+<a href="/{{nav.slug}}/related">Related posts</a>
+</p>
+<br/>
+<div id="social" class="social">
+<!-- AddThis Button BEGIN -->
+<div class="addthis_toolbox addthis_default_style addthis_32x32_style">
+<a class="addthis_button_preferred_1"></a>
+<a class="addthis_button_preferred_2"></a>
+<a class="addthis_button_preferred_3"></a>
+<a class="addthis_button_preferred_4"></a>
+<a class="addthis_button_compact"></a>
+<a class="addthis_counter addthis_bubble_style"></a>
+</div>
+<script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=ra-4f5a466f7b1d3d5f"></script>
+<!-- AddThis Button END -->
+</div>
+{%endfor%}
+
+<div class="pagination">
+<span class="step_links">
+	{%if nav.has_previous%}
+		<a href="?page={{nav.previous_page_number}}">previous</a>
+	{%endif%}
+	
+	<span class="current">
+		Page{{nav.number}} of {{nav.paginator.num_pages}}.
+	</span>
+	{%if nav.has_next%}
+		<a href="?page={{nav.next_page_number}}">next</a>
+	{%endif%}
+	</span>
+</div>
+</body>
+</html>

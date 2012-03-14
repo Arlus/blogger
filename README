@@ -1,0 +1,11 @@
+-This is an upgraded version of my-blogger.
+
+-Improvements included are:
+	-RSS feeds
+	-Archives
+	-Newsletter subscriptions & unsubscriptions
+	-Related posts based on post meta tags
+	
+-Newsletters are handled by MailChimp and so you have to create an account, create a list then replace the MailChimp newsletter subscription form code with the one it will generate from your settings. The same goes with the newsletter unsubscription link.
+	
+
